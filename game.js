@@ -1969,7 +1969,7 @@ class Game {
 
     let cards = [], tabHint = '';
     if (this.state.tab === 'club') {
-      tabHint = 'Structures are permanent and scale in price. Everything on this tab is bought with cash. A few regulars wander in on their own; Buzz fills the floor faster.';
+      tabHint = 'Structures are permanent and scale in price. Everything on this tab is bought with cash. A few regulars wander in on their own; Buzz fills the floor faster. Shift-click a Build button to buy the maximum affordable in one click.';
       cards = this.BUILDINGS.map(d => {
         const n = g.b[d.id], price = Math.floor(d.cost * Math.pow(d.growth, n));
         const max = d.id === 'door' ? this.doorMax(g) : d.max;
@@ -2409,7 +2409,7 @@ class Game {
         <div style="display:flex;align-items:center;gap:8px">
           ${cd.reqLocked
             ? `<span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#6f5885;font-weight:600;min-width:104px;text-align:center;padding:8px 12px">requires ${cd.reqName}</span>`
-            : `<button data-h="${this.bind(cd.act)}" ${cd.locked ? 'disabled' : ''} style="${css(cd.btnStyle)}">${cd.btn}</button>`}
+            : `<button data-h="${this.bind(cd.act)}" ${cd.locked ? 'disabled' : ''} ${cd.buildingId ? 'title="Shift-click to buy the maximum affordable"' : ''} style="${css(cd.btnStyle)}">${cd.btn}</button>`}
           <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:#6f5885;text-align:right;flex:1">${cd.meta}</span>
         </div>
       </div>`).join('');
